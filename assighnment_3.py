@@ -126,4 +126,15 @@ def searchForAnElement(l,e):#O(N^3)
     print("The initial list is", l)
     for i in range(len(l)):#scan the list
       if l[i] == e:#if the list at certain index is equal to the element the user is searching for
-      
+        for x in range(len(l)-1):
+        #sorting the list
+          for y in range(x+1, len(l)):
+            if l[x]>l[y]:
+              temp = l[x]
+              l[x] = l[y]
+              l[y] = temp
+        print("The sorted list is:", l)
+
+        return "Found at index", i
+
+    return "The element you searched for is not found in the list you entered "
