@@ -138,3 +138,5 @@ def searchForAnElement(l,e):#O(N^3)
         return "Found at index", i
 
     return "The element you searched for is not found in the list you entered "
+def displayMenu():#O(1)
+    print("1. Add Matricies\n2. Check Rotation\n3. Invert Dictionary\n4. Convert Matrix to Dictionary\n5. Check Palindrome\n6. Search for an Element\n7. Exit")
