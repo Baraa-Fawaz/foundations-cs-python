@@ -72,3 +72,19 @@ def checkRotation(m1, m2):
             print("enter the value in row", i + 1, "col", j + 1)
             mat_2[i][j] = int(input())
     print("you second matrix is", mat_2)
+    #check if the two lists are rotational
+    check_list = []
+    if len(mat_1)>len(mat_2) or len(mat_2)>len(mat_1):# inorder for the two lists two be rotational then length of one of them should be greater than the other
+        if len(mat_1)>len(mat_2):#if len mat_1 is greater than mat_2 the mat_1 has more rows than mat_2
+           more_columns = mat_2
+           more_rows = mat_1
+
+        else:#if len mat_1 is less than mat_2 the mat_2 has more rows than mat_1
+            more_rows = mat_2
+            more_columns = mat_1
+        for i in range(len(more_rows[0])):
+          for j in range(len(more_rows)):
+            check_list.append(more_rows[j][i])
+          if check_list == more_columns[i]:#compers the first element of each row of the matrix having more rows to the first row in the second matrix
+           return True, "the two matrices are rotational"
+    return False, "the two matrices are not rotational"
