@@ -122,3 +122,8 @@ def checkPalindrome(s):
     return checkPalindrome(s[1:-1])#call the function without the first and last index's we checked
   else:
     return "The string is not palindrome"
+def searchForAnElement(l,e):#O(N^3)
+    print("The initial list is", l)
+    for i in range(len(l)):#scan the list
+      if l[i] == e:#if the list at certain index is equal to the element the user is searching for
+      
