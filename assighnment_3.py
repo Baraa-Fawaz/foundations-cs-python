@@ -88,3 +88,21 @@ def checkRotation(m1, m2):
           if check_list == more_columns[i]:#compers the first element of each row of the matrix having more rows to the first row in the second matrix
            return True, "the two matrices are rotational"
     return False, "the two matrices are not rotational"
+def invertedDictionary(dictt):#O(N)
+    inverted_dict = {}
+    #create the initial dictionary
+    num = int(input("Enter how many elements are there in the dictionary: "))
+    for i in range(num):
+        key = input("Enter the student ID: ")
+        value = input("Enter the student name: ")
+        dictt[key] = value
+    for key, value in dictt.items():
+        #check if the value is found in the inverted dictionary
+        if value in inverted_dict:
+            #if it is found we replace the value with the key and append the keys as values
+            inverted_dict[value].append(key)
+        else:
+            # if it is not found we just change the key into value and the value into a key
+            inverted_dict[value] = [key]
+
+    return inverted_dict  
