@@ -30,3 +30,16 @@ def addMatrices(mat_1, mat_2):
             print("enter the value in row", i + 1, "col", j + 1)
             mat_2[i][j] = int(input())#input the print statment as an integer
     print("you second matrix is", mat_2)
+    if row_1 != row_2 or column_1 != column_2:
+    print("Matrix addition is not possible. The matrices must have the same dimensions.")
+    return #terminate the function if the dimentions of the two lists are different
+    result = []
+    for i in range(row_2):
+        result_row = []
+        for j in range(column_2):
+            sum = mat_1[i][j] + mat_2[i][j]#adds the elements at same index
+            result_row.append(sum)
+        result.append(result_row)
+
+    print("The result of matrix addition is:")
+    print(result)
