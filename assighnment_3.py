@@ -106,3 +106,12 @@ def invertedDictionary(dictt):#O(N)
             inverted_dict[value] = [key]
 
     return inverted_dict  
+def convertMatrixToDictionary(matrix):
+  print("Your matrix is:", matrix)
+  dic = {}
+  for i in range(len(matrix)):
+    key = matrix[i][2]#because we know that the id which will be the key is found at index two
+    value = [matrix[i][0], matrix[i][1], matrix[i][3], matrix[i][4]]#the value will be all the other elements found in the rest index's
+    dic[key] = value #we create the dictionary
+
+  return "Your dictionary is",dic   
