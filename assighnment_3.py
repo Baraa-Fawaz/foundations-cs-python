@@ -1,7 +1,7 @@
 user_name = input("Enter your name: ")
 print("Hello", user_name)
 #Welcome statment
-def addMatrices(mat_1, mat_2):
+def addMatrices(mat_1, mat_2):#O(N^2)
     #for matrix_1
     row_1 = eval(input("Enter number of rows of the first matrix: "))
     column_1 = eval(input("Enter number of columns of the first matrix : "))
@@ -43,7 +43,7 @@ def addMatrices(mat_1, mat_2):
 
     print("The result of matrix addition is:")
     print(result)
-def checkRotation(m1, m2):
+def checkRotation(m1, m2):#O(N^3)
     #take the two functions from the user in the same way use at the first function
     row_1 = eval(input("Enter number of rows of the first matrix: "))
     column_1 = eval(input("Enter number of columns of the first matrix : "))
@@ -106,7 +106,7 @@ def invertedDictionary(dictt):#O(N)
             inverted_dict[value] = [key]
 
     return inverted_dict  
-def convertMatrixToDictionary(matrix):
+def convertMatrixToDictionary(matrix):#O(N)
   print("Your matrix is:", matrix)
   dic = {}
   for i in range(len(matrix)):
@@ -115,7 +115,7 @@ def convertMatrixToDictionary(matrix):
     dic[key] = value #we create the dictionary
 
   return "Your dictionary is",dic   
-def checkPalindrome(s):
+def checkPalindrome(s):#O(1)
   if len(s) <= 1:#if the lenth of the sting is = 1 or empty
     return "String is plaindrome"
   if s[0] == s[-1]:#check if the first index and the last in the string are the same
@@ -140,7 +140,7 @@ def searchForAnElement(l,e):#O(N^3)
     return "The element you searched for is not found in the list you entered "
 def displayMenu():#O(1)
     print("1. Add Matricies\n2. Check Rotation\n3. Invert Dictionary\n4. Convert Matrix to Dictionary\n5. Check Palindrome\n6. Search for an Element\n7. Exit")
-def main():
+def main():#)(N^3)
     #display the choices for the user
     displayMenu()
     choice = eval(input("Enter your choice: "))
