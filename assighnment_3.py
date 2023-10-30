@@ -31,8 +31,8 @@ def addMatrices(mat_1, mat_2):#O(N^2)
             mat_2[i][j] = int(input())#input the print statment as an integer
     print("you second matrix is", mat_2)
     if row_1 != row_2 or column_1 != column_2:
-    print("Matrix addition is not possible. The matrices must have the same dimensions.")
-    return #terminate the function if the dimentions of the two lists are different
+      print("Matrix addition is not possible. The matrices must have the same dimensions.")
+      return #terminate the function if the dimentions of the two lists are different
     result = []
     for i in range(row_2):
         result_row = []
