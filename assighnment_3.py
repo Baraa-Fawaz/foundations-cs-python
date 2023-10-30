@@ -115,3 +115,10 @@ def convertMatrixToDictionary(matrix):
     dic[key] = value #we create the dictionary
 
   return "Your dictionary is",dic   
+def checkPalindrome(s):
+  if len(s) <= 1:#if the lenth of the sting is = 1 or empty
+    return "String is plaindrome"
+  if s[0] == s[-1]:#check if the first index and the last in the string are the same
+    return checkPalindrome(s[1:-1])#call the function without the first and last index's we checked
+  else:
+    return "The string is not palindrome"
