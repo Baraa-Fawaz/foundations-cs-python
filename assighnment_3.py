@@ -140,3 +140,49 @@ def searchForAnElement(l,e):#O(N^3)
     return "The element you searched for is not found in the list you entered "
 def displayMenu():#O(1)
     print("1. Add Matricies\n2. Check Rotation\n3. Invert Dictionary\n4. Convert Matrix to Dictionary\n5. Check Palindrome\n6. Search for an Element\n7. Exit")
+def main():
+    #display the choices for the user
+    displayMenu()
+    choice = eval(input("Enter your choice: "))
+
+    while choice != 7:
+        if choice == 1:
+          matrix_1 = []
+          matrix_2 = []
+          addMatrices(matrix_1, matrix_2)
+        elif choice == 2:
+            matrix_1 = []
+            matrix_2 = []
+            print(checkRotation(matrix_1, matrix_2))
+        elif choice == 3:
+            dictt = {}
+            inverted_dict = invertedDictionary(dictt)
+            print(inverted_dict)
+        elif choice == 4:
+            #create a matrix
+            matrix = []
+            row = eval(input("Enter number of rows: "))
+
+            for i in range(row):
+                #for every person add his informations in a row of the matrix
+                first_name = input("Enter your first name: ")
+                last_name = input("Enter your last name: ")
+                id = input("Enter your id: ")
+                job_title = input("Enter your jobtitle: ")
+                company = input("Enter the name of your company:")
+                matrix.append([first_name, last_name, id, job_title, company])
+            print(convertMatrixToDictionary(matrix))
+        elif choice == 5:
+            string = input("Enter a word to check if it is palindrome: ")
+            print(checkPalindrome(string))
+        elif choice == 6:
+             list = input("Enter the element of you list separated by a space: ").split()
+             element = input("Enter the element you want to search for: ")
+             print(searchForAnElement(list, element))
+        elif choice != 7:
+            print("Your choice is invalid")
+        displayMenu()
+        choice = eval(input("Enter your choice:"))
+    print("You have exited the program")
+
+main()
