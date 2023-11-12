@@ -64,10 +64,14 @@ def openNestedTab(parent_tab_index):
       nested_tab = {}
       nested_tab_title = input("Enter the title of the nested tab:")
       nested_tab_url = input("Enter the URL of the nested website:")
-      nested_tab["tab_title"] = nested_tab_title
-      nested_tab["tab_url"] = nested_tab_url
-      main_dict["all_tabs"][int(parent_tab_index)]["nested_tab"].append(nested_tab)  #created a dictionary containing the title and the url of the child tab then adding this dictionary(child tab) to the nested tab key in the parent dictionary(tab)
-      
+      if urlparse(nested_tab_url).scheme != '' and urlparse(nested_tab_url).netloc != '':
+        nested_tab["tab_title"] = nested_tab_title
+        nested_tab["tab_url"] = nested_tab_url
+        main_dict["all_tabs"][int(parent_tab_index)]["nested_tab"].append(nested_tab)  #created a dictionary containing the title and the url of the child tab then adding this dictionary(child tab) to the nested tab key in the parent dictionary(tab)
+      else:
+        print("Invalid URL")
+     else:
+      print("Invalid input.the index you entered is out of range of lenght of the list")
 def clearAllTabs():
     pass
 def saveTabs():
