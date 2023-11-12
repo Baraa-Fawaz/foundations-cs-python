@@ -1,9 +1,15 @@
 #Greeting the user
 user_name = input("Enter your name:")
-print("Hello", user_name, "Welcomt to the Advanced Browser Tabs Simulation")
+print("Hello", user_name, "Welcome to the Advanced Browser Tabs Simulation")
+main_dict = {"all_tabs": []}
 
-def openTab():
-    pass
+def openTab(title,url):
+    open_tab = {}
+    open_tab["tab_title"] = title
+    open_tab["tab_url"] = url
+    open_tab["nested_tab"] = []
+    main_dict["all_tabs"].append(open_tab)
+    print("A new tab has been opened")
 def closeTab():
     pass
 def switchTab():
@@ -28,7 +34,9 @@ def main():
 
   while choice != 9:
     if choice == 1:
-      openTab()
+      title = input("Enter the title of the tab:")
+      url = input("Enter the URL of the website:")
+      openTab(title,url)
     elif choice == 2:
       closeTab()
     elif choice == 3:
