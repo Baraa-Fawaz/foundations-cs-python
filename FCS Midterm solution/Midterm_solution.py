@@ -54,8 +54,9 @@ def displayAllTabs(all_tabs):
      print("There is no opened tabs yet.try opening a new tab first")
     elif len(all_tabs[i]["nested_tab"]) == 0:  #if the tab is not nested only print the title of the tab
         print("Title",i+1,":",all_tabs[i]['tab_title'])
-def openNestedTab():
-    pass
+def openNestedTab(parent_tab_index):
+    if len(main_dict["all_tabs"]) == 0:
+     print("You can't create a nested tab since there is no opened tab yet.try opening a new tab first")
 def clearAllTabs():
     pass
 def saveTabs():
@@ -85,7 +86,8 @@ def main():
       all_tabs = main_dict["all_tabs"]
       displayAllTabs(all_tabs)
     elif choice == 5:
-      openNestedTab()
+      parent_tab_index = input("Enter the index of the parent tab:")
+      openNestedTab(parent_tab_index)
     elif choice == 6:
       clearAllTabs()
     elif choice == 7:
