@@ -1,4 +1,6 @@
 from urllib.parse import urlparse #ref: Stackoverflow
+import requests
+from bs4 import BeautifulSoup  #ref: GeekforGeeks (https://www.youtube.com/watch?v=O6nnVHPjcJU&t=2s)
 #Greeting the user
 user_name = input("Enter your name:")
 print("Hello", user_name, "Welcome to the Advanced Browser Tabs Simulation")
@@ -28,8 +30,13 @@ def closeTab(i):
     else:
         print("Invalid input.Try to Enter a correct index")
 
-def switchTab():
-    pass
+def switchTab(num):
+    if num == "":  #check if the user did not provide any index
+      html_url = main_dict["all_tabs"][-1]["tab_url"]
+      req = requests.get(html_url)
+      html = BeautifulSoup(req.content, "html.parser")
+      html_content = html.prettify()
+      print(html_content)  #displaying the html content of the last oppened tab
 def displayAllTabs():
     pass
 def openNestedTab():
