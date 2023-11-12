@@ -18,6 +18,8 @@ def closeTab(i):
     if i == "":  #Check if the user did not give any index
      main_dict["all_tabs"].remove(main_dict["all_tabs"][-1])#closing the last opened tab in the list of tabs
      print("The last opened tab has been closed")
+    elif len(main_dict["all_tabs"]) == 0:
+     print("There is no opened tabs to close.Try opening a new tab first")  #we can't close tabs if they are not opened
 def switchTab():
     pass
 def displayAllTabs():
