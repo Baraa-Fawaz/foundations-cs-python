@@ -1,6 +1,7 @@
 from urllib.parse import urlparse #ref: Stackoverflow
 import requests
 from bs4 import BeautifulSoup  #ref: GeekforGeeks (https://www.youtube.com/watch?v=O6nnVHPjcJU&t=2s)
+import json #ref: NeuralNine (https://www.youtube.com/watch?v=jABj-SEhtBc&t=258s)
 #Greeting the user
 user_name = input("Enter your name:")
 print("Hello", user_name, "Welcome to the Advanced Browser Tabs Simulation")
