@@ -37,6 +37,8 @@ def switchTab(num):
       html = BeautifulSoup(req.content, "html.parser")
       html_content = html.prettify()
       print(html_content)  #displaying the html content of the last oppened tab
+    elif len(main_dict["all_tabs"]) == 0:  #can't display the html content of a tab that is not opened
+     print("There is no opened tabs to see its conent")
 def displayAllTabs():
     pass
 def openNestedTab():
