@@ -17,7 +17,7 @@ def openTab(title,url):#creating a tab by appending a dictionary contianing the 
     else:
       print("Invalid URL")  
 def closeTab(i):
-    if i == "":  #Check if the user did not give any index
+    if i == "" and len(main_dict["all_tabs"]) != 0:  #Check if the user did not give any index
      main_dict["all_tabs"].remove(main_dict["all_tabs"][-1])#closing the last opened tab in the list of tabs
      print("The last opened tab has been closed")
     elif len(main_dict["all_tabs"]) == 0:
