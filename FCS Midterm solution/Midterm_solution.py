@@ -82,8 +82,10 @@ def openNestedTab(parent_tab_index):
 def clearAllTabs(opened_tabs):
     opened_tabs.clear()  #.clear will delet everything in the list containing all opened tabs
     print("All opened tabs have been cleared")
-def saveTabs():
-    pass
+def saveTabs(file_path):
+    json_string = json.dumps(main_dict,indent=1)  
+    with open(file_path, "w") as f:
+     f.write(json_string)  #save everything created by the user into a json file
 def importTabs():
     pass
 def displayMenu():
@@ -115,7 +117,8 @@ def main():
       opened_tabs = main_dict["all_tabs"]
       clearAllTabs(opened_tabs)
     elif choice == 7:
-      saveTabs()
+      file_path = input("Enter the path of your json file")
+      saveTabs(file_path)
     elif choice == 8:
       importTabs()
     elif choice != 9:
