@@ -49,8 +49,9 @@ def switchTab(num):
         print(html_content)  #displaying the html content of the tab that the user provided its index
     else:
      print("Invalid input")
-def displayAllTabs():
-    pass
+def displayAllTabs(parent_tab_index):
+    if len(main_dict["all_tabs"]) == 0:
+     print("You can't create a nested tab since there is no opened tab yet.try opening a new tab first")
 def openNestedTab():
     pass
 def clearAllTabs():
