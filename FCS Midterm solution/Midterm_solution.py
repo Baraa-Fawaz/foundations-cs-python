@@ -3,8 +3,10 @@ import requests
 from bs4 import BeautifulSoup  #ref: GeekforGeeks (https://www.youtube.com/watch?v=O6nnVHPjcJU&t=2s)
 import json #ref: NeuralNine (https://www.youtube.com/watch?v=jABj-SEhtBc&t=258s)
 #Greeting the user
+
 user_name = input("Enter your name:")
 print("Hello", user_name, "Welcome to the Advanced Browser Tabs Simulation")
+
 main_dict = {"all_tabs": []}
 
 def openTab(title,url):#creating a tab by appending a dictionary contianing the tab title and content into the list of dictionaries(tabs)
@@ -17,6 +19,9 @@ def openTab(title,url):#creating a tab by appending a dictionary contianing the 
       print("A new tab has been opened")
     else:
       print("Invalid URL")  
+
+
+
 def closeTab(i):
     if i == "" and len(main_dict["all_tabs"]) != 0:  #Check if the user did not give any index
      main_dict["all_tabs"].remove(main_dict["all_tabs"][-1])#closing the last opened tab in the list of tabs
@@ -30,6 +35,8 @@ def closeTab(i):
         print("the tab at index", i, "has been closed") #remove the tab at the index that the user provided
     else:
         print("Invalid input.Try to Enter a correct index")
+
+
 
 def switchTab(num):
     if num == "":  #check if the user did not provide any index
@@ -50,6 +57,9 @@ def switchTab(num):
         print(html_content)  #displaying the html content of the tab that the user provided its index
     else:
      print("Invalid input")
+
+
+
 def displayAllTabs(all_tabs):
     if len(all_tabs) == 0:
      print("There is no opened tabs yet.try opening a new tab first")
@@ -62,6 +72,9 @@ def displayAllTabs(all_tabs):
           print("\t_Nested title",x+1,":", all_tabs[i]["nested_tab"][x]["tab_title"])  #print the tab title for the child tab
       elif len(all_tabs[i]["nested_tab"]) == 0:  #if the tab is not nested only print the title of the tab
         print("Title",i+1,":",all_tabs[i]['tab_title'])
+
+
+
 def openNestedTab(parent_tab_index):
     if len(main_dict["all_tabs"]) == 0:
      print("You can't create a nested tab since there is no opened tab yet.try opening a new tab first")
@@ -80,22 +93,37 @@ def openNestedTab(parent_tab_index):
         print("Invalid URL")
      else:
       print("Invalid input.the index you entered is out of range of lenght of the list")
+
+
+
 def clearAllTabs(opened_tabs):
     opened_tabs.clear()  #.clear will delet everything in the list containing all opened tabs
     print("All opened tabs have been cleared")
+
+
+
 def saveTabs(file_path):
     json_string = json.dumps(main_dict,indent=1)  
     with open(file_path, "w") as f:
      f.write(json_string)  #save everything created by the user into a json file
+
+
+
 def importTabs(load_file_path):
     global main_dict
     with open(load_file_path, "r") as f:
      main = json.loads(f.read())
      main_dict = main
+
+
+
 def displayMenu():
   print("1. Open Tab\n2. Close Tab\n3. Switch Tab")
   print("4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs")
   print("7. Save Tabs\n8. Import Tabs\n9. Exit")  #using 3 print statment only for better visualization
+
+
+
 def main():
   displayMenu()
   choice = eval(input("Enter a number: "))
@@ -105,27 +133,35 @@ def main():
       title = input("Enter the title of the tab:")
       url = input("Enter the URL of the website:")
       openTab(title,url)
+
     elif choice == 2:
       index = input("Enter the index of the tab you want to close:")
       closeTab(index)
+
     elif choice == 3:
       number = input("Enter the index of the tab you whant to display its content: ")
       switchTab(number)
+
     elif choice == 4:
       all_tabs = main_dict["all_tabs"]
       displayAllTabs(all_tabs)
+
     elif choice == 5:
       parent_tab_index = input("Enter the index of the parent tab:")
       openNestedTab(parent_tab_index)
+
     elif choice == 6:
       opened_tabs = main_dict["all_tabs"]
       clearAllTabs(opened_tabs)
+
     elif choice == 7:
       load_file_path = input("Enter the path of your json file")
       saveTabs(load_file_path)
+
     elif choice == 8:
       file_path = input("Enter the path of your json file")
       importTabs(file_path)
+      
     elif choice != 9:
       print("Invalid input.Try to choose a number from 1 to 9")
 
