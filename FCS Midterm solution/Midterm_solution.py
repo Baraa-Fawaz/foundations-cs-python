@@ -52,6 +52,8 @@ def switchTab(num):
 def displayAllTabs(all_tabs):
     if len(all_tabs) == 0:
      print("There is no opened tabs yet.try opening a new tab first")
+    elif len(all_tabs[i]["nested_tab"]) == 0:  #if the tab is not nested only print the title of the tab
+        print("Title",i+1,":",all_tabs[i]['tab_title'])
 def openNestedTab():
     pass
 def clearAllTabs():
