@@ -102,14 +102,14 @@ def clearAllTabs(opened_tabs):#worst case---> 0(1)
 
 
 
-def saveTabs(file_path):
+def saveTabs(file_path):#worst case---> 0(1)
     json_string = json.dumps(main_dict,indent=1)  
     with open(file_path, "w") as f:
      f.write(json_string)  #save everything created by the user into a json file
 
 
 
-def importTabs(load_file_path):
+def importTabs(load_file_path):#worst case---> 0(1)
     global main_dict
     with open(load_file_path, "r") as f:
      main = json.loads(f.read())
@@ -117,7 +117,7 @@ def importTabs(load_file_path):
 
 
 
-def displayMenu():
+def displayMenu():#worst case---> 0(1)
   print("1. Open Tab\n2. Close Tab\n3. Switch Tab")
   print("4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs")
   print("7. Save Tabs\n8. Import Tabs\n9. Exit")  #using 3 print statment only for better visualization
