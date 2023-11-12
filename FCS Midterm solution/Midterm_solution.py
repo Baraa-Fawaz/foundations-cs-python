@@ -75,7 +75,7 @@ def displayAllTabs(all_tabs):#worst case---> 0(N^2) where N represents the lengt
 
 
 
-def openNestedTab(parent_tab_index):
+def openNestedTab(parent_tab_index):#worst case---> 0(1)
     if len(main_dict["all_tabs"]) == 0:
      print("You can't create a nested tab since there is no opened tab yet.try opening a new tab first")
     else:
@@ -96,7 +96,7 @@ def openNestedTab(parent_tab_index):
 
 
 
-def clearAllTabs(opened_tabs):
+def clearAllTabs(opened_tabs):#worst case---> 0(1)
     opened_tabs.clear()  #.clear will delet everything in the list containing all opened tabs
     print("All opened tabs have been cleared")
 
