@@ -79,8 +79,9 @@ def openNestedTab(parent_tab_index):
         print("Invalid URL")
      else:
       print("Invalid input.the index you entered is out of range of lenght of the list")
-def clearAllTabs():
-    pass
+def clearAllTabs(opened_tabs):
+    opened_tabs.clear()  #.clear will delet everything in the list containing all opened tabs
+    print("All opened tabs have been cleared")
 def saveTabs():
     pass
 def importTabs():
@@ -111,7 +112,8 @@ def main():
       parent_tab_index = input("Enter the index of the parent tab:")
       openNestedTab(parent_tab_index)
     elif choice == 6:
-      clearAllTabs()
+      opened_tabs = main_dict["all_tabs"]
+      clearAllTabs(opened_tabs)
     elif choice == 7:
       saveTabs()
     elif choice == 8:
