@@ -9,7 +9,7 @@ print("Hello", user_name, "Welcome to the Advanced Browser Tabs Simulation")
 
 main_dict = {"all_tabs": []}
 
-def openTab(title,url):#creating a tab by appending a dictionary contianing the tab title and content into the list of dictionaries(tabs)
+def openTab(title,url):#worst case---> O(1) #creating a tab by appending a dictionary contianing the tab title and content into the list of dictionaries(tabs)
     if urlparse(url).scheme != '' and urlparse(url).netloc != '':#ref: Stackoverflow (https://stackoverflow.com/questions/53992694/what-does-netloc-mean) scheme will check if the user url contains http or https,netloc identifies the network location where the resource is hosted
       open_tab = {}
       open_tab["tab_title"] = title
@@ -22,7 +22,7 @@ def openTab(title,url):#creating a tab by appending a dictionary contianing the 
 
 
 
-def closeTab(i):
+def closeTab(i):#worst case---> 0(N) where N represents the length of the list of opened tabs
     if i == "" and len(main_dict["all_tabs"]) != 0:  #Check if the user did not give any index
      main_dict["all_tabs"].remove(main_dict["all_tabs"][-1])#closing the last opened tab in the list of tabs
      print("The last opened tab has been closed")
@@ -161,7 +161,7 @@ def main():
     elif choice == 8:
       file_path = input("Enter the path of your json file")
       importTabs(file_path)
-      
+
     elif choice != 9:
       print("Invalid input.Try to choose a number from 1 to 9")
 
