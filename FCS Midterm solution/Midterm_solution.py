@@ -52,7 +52,14 @@ def switchTab(num):
 def displayAllTabs(all_tabs):
     if len(all_tabs) == 0:
      print("There is no opened tabs yet.try opening a new tab first")
-    elif len(all_tabs[i]["nested_tab"]) == 0:  #if the tab is not nested only print the title of the tab
+    else:
+     print("Titels of all opened tabs:")
+     for i in range(len(all_tabs)):
+      if len(all_tabs[i]["nested_tab"]) > 0:  #check if the tab has nested tabs
+        print("Title",i+1,"(Parent):",all_tabs[i]['tab_title'])  #print the tab title for the parent tab
+        for x in range(len(all_tabs[i]["nested_tab"])):#O(N)
+          print("\t_Nested title",x+1,":", all_tabs[i]["nested_tab"][x]["tab_title"])  #print the tab title for the child tab
+      elif len(all_tabs[i]["nested_tab"]) == 0:  #if the tab is not nested only print the title of the tab
         print("Title",i+1,":",all_tabs[i]['tab_title'])
 def openNestedTab(parent_tab_index):
     if len(main_dict["all_tabs"]) == 0:
