@@ -38,7 +38,7 @@ def closeTab(i):#worst case---> 0(N) where N represents the length of the list o
 
 
 
-def switchTab(num):
+def switchTab(num):#worst case---> 0(N^2) where N represents the length of the list of opened tabs
     if num == "":  #check if the user did not provide any index
       html_url = main_dict["all_tabs"][-1]["tab_url"]
       req = requests.get(html_url)
@@ -60,7 +60,7 @@ def switchTab(num):
 
 
 
-def displayAllTabs(all_tabs):
+def displayAllTabs(all_tabs):#worst case---> 0(N^2) where N represents the length of the list of parent tabs and N for the length of list of nested tabs in the parent tab so N*N-->O(N^2)
     if len(all_tabs) == 0:
      print("There is no opened tabs yet.try opening a new tab first")
     else:
