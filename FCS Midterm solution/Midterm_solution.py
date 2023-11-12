@@ -3,7 +3,7 @@ user_name = input("Enter your name:")
 print("Hello", user_name, "Welcome to the Advanced Browser Tabs Simulation")
 main_dict = {"all_tabs": []}
 
-def openTab(title,url):
+def openTab(title,url):#creating a tab by appending a dictionary contianing the tab title and content into the list of dictionaries(tabs)
     open_tab = {}
     open_tab["tab_title"] = title
     open_tab["tab_url"] = url
