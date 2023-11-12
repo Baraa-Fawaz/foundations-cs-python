@@ -124,7 +124,7 @@ def displayMenu():#worst case---> 0(1)
 
 
 
-def main():
+def main():#worst case--->O(N^2) where main handeles the worst case among all functions which is O(N^2) for (displayAllTabs function)
   displayMenu()
   choice = eval(input("Enter a number: "))
 
