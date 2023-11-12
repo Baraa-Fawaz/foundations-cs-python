@@ -86,8 +86,11 @@ def saveTabs(file_path):
     json_string = json.dumps(main_dict,indent=1)  
     with open(file_path, "w") as f:
      f.write(json_string)  #save everything created by the user into a json file
-def importTabs():
-    pass
+def importTabs(load_file_path):
+    global main_dict
+    with open(load_file_path, "r") as f:
+     main = json.loads(f.read())
+     main_dict = main
 def displayMenu():
   print("1. Open Tab\n2. Close Tab\n3. Switch Tab")
   print("4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs")
@@ -117,10 +120,11 @@ def main():
       opened_tabs = main_dict["all_tabs"]
       clearAllTabs(opened_tabs)
     elif choice == 7:
-      file_path = input("Enter the path of your json file")
-      saveTabs(file_path)
+      load_file_path = input("Enter the path of your json file")
+      saveTabs(load_file_path)
     elif choice == 8:
-      importTabs()
+      file_path = input("Enter the path of your json file")
+      importTabs(file_path)
     elif choice != 9:
       print("Invalid input.Try to choose a number from 1 to 9")
 
