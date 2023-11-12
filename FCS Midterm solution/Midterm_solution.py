@@ -57,6 +57,17 @@ def displayAllTabs(all_tabs):
 def openNestedTab(parent_tab_index):
     if len(main_dict["all_tabs"]) == 0:
      print("You can't create a nested tab since there is no opened tab yet.try opening a new tab first")
+    else:
+     if parent_tab_index == "":
+      print("you can't enter an empty index")
+     elif int(parent_tab_index) >= 0 and int(parent_tab_index) < len(main_dict["all_tabs"]):
+      nested_tab = {}
+      nested_tab_title = input("Enter the title of the nested tab:")
+      nested_tab_url = input("Enter the URL of the nested website:")
+      nested_tab["tab_title"] = nested_tab_title
+      nested_tab["tab_url"] = nested_tab_url
+      main_dict["all_tabs"][int(parent_tab_index)]["nested_tab"].append(nested_tab)  #created a dictionary containing the title and the url of the child tab then adding this dictionary(child tab) to the nested tab key in the parent dictionary(tab)
+      
 def clearAllTabs():
     pass
 def saveTabs():
