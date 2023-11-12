@@ -14,8 +14,10 @@ def openTab(title,url):#creating a tab by appending a dictionary contianing the 
       print("A new tab has been opened")
     else:
       print("Invalid URL")  
-def closeTab():
-    pass
+def closeTab(i):
+    if i == "":  #Check if the user did not give any index
+     main_dict["all_tabs"].remove(main_dict["all_tabs"][-1])#closing the last opened tab in the list of tabs
+     print("The last opened tab has been closed")
 def switchTab():
     pass
 def displayAllTabs():
