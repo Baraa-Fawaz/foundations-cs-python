@@ -20,6 +20,14 @@ def closeTab(i):
      print("The last opened tab has been closed")
     elif len(main_dict["all_tabs"]) == 0:
      print("There is no opened tabs to close.Try opening a new tab first")  #we can't close tabs if they are not opened
+    elif int(i) >= 0 and int(i) < len(main_dict["all_tabs"]):  #check if the index entered by the user represents the number of element found in the list of tabs
+     for x in range(len(main_dict["all_tabs"])):#0(N) 
+      if x == int(i):
+        main_dict["all_tabs"].remove(main_dict["all_tabs"][x])
+        print("the tab at index", i, "has been closed") #remove the tab at the index that the user provided
+    else:
+        print("Invalid input.Try to Enter a correct index")
+
 def switchTab():
     pass
 def displayAllTabs():
@@ -46,7 +54,8 @@ def main():
       url = input("Enter the URL of the website:")
       openTab(title,url)
     elif choice == 2:
-      closeTab()
+      index = input("Enter the index of the tab you want to close:")
+      closeTab(index)
     elif choice == 3:
       switchTab()
     elif choice == 4:
