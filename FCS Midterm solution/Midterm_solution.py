@@ -39,6 +39,16 @@ def switchTab(num):
       print(html_content)  #displaying the html content of the last oppened tab
     elif len(main_dict["all_tabs"]) == 0:  #can't display the html content of a tab that is not opened
      print("There is no opened tabs to see its conent")
+    elif int(num) >= 0 and int(num) < len(main_dict["all_tabs"]):
+     for x in range(len(main_dict["all_tabs"])):#O(N)
+      if int(num) == x:
+        html_url = main_dict["all_tabs"][x]["tab_url"]
+        req = requests.get(html_url)
+        html = BeautifulSoup(req.content, "html.parser")
+        html_content = html.prettify()
+        print(html_content)  #displaying the html content of the tab that the user provided its index
+    else:
+     print("Invalid input")
 def displayAllTabs():
     pass
 def openNestedTab():
@@ -66,7 +76,8 @@ def main():
       index = input("Enter the index of the tab you want to close:")
       closeTab(index)
     elif choice == 3:
-      switchTab()
+      number = input("Enter the index of the tab you whant to display its content: ")
+      switchTab(number)
     elif choice == 4:
       displayAllTabs()
     elif choice == 5:
