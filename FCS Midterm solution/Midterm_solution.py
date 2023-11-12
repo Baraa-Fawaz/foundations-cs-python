@@ -18,3 +18,7 @@ def saveTabs():
     pass
 def importTabs():
     pass
+def displayMenu():
+  print("1. Open Tab\n2. Close Tab\n3. Switch Tab")
+  print("4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs")
+  print("7. Save Tabs\n8. Import Tabs\n9. Exit")  #using 3 print statment only for better visualization
