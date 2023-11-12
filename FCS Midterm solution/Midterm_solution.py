@@ -106,6 +106,7 @@ def saveTabs(file_path):#worst case---> 0(1)
     json_string = json.dumps(main_dict,indent=1)  
     with open(file_path, "w") as f:
      f.write(json_string)  #save everything created by the user into a json file
+    print("All files have been saved to the json file")
 
 
 
@@ -155,12 +156,12 @@ def main():#worst case--->O(N^2) where main handeles the worst case among all fu
       clearAllTabs(opened_tabs)
 
     elif choice == 7:
-      load_file_path = input("Enter the path of your json file")
-      saveTabs(load_file_path)
+      file_path = input("Enter the path of your json file")
+      saveTabs(file_path)
 
     elif choice == 8:
-      file_path = input("Enter the path of your json file")
-      importTabs(file_path)
+      load_file_path = input("Enter the path of your json file")
+      importTabs(load_file_path)
 
     elif choice != 9:
       print("Invalid input.Try to choose a number from 1 to 9")
@@ -172,3 +173,4 @@ def main():#worst case--->O(N^2) where main handeles the worst case among all fu
 
 
 main()
+#####end#####
