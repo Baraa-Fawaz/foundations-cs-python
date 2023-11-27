@@ -204,11 +204,88 @@ def evaluateAnInfixExpression(expression):#Worst case ---> O(N^2)
       return stack_numbers.pop()
     else:
       return None
+
+class LinkedList:#Worst case ---> O(N)
+    def __init__(self):
+        self.head = None
+        self.next = None
+        self.size = 0
+    def addNode(self, data):#Worst case ---> O(1)
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+        self.size += 1
+
+    def deleteNode(self, data):#Worst case ---> O(N)
+        current = self.head
+
+        # when the node to be deleted is the head
+        if current is not None and current.info == data:
+            self.head = current.next
+            return
+
+        # Search for the node to be deleted
+        prev = None
+        while current is not None and current.info != data:#O(N)
+            prev = current
+            current = current.next
+        if current is None:
+            return
+        prev.next = current.next
+        self.size -= 1
+
+
+
+
+
+
+
+class Graph:#Worst case ---> O(V)
+    def __init__(self):
+        self.vertices = {}
+    def addVertex(self, vertex):#Worst case ---> O(1)
+        if vertex not in self.vertices:#if the vetex does not already exists and that vertex as a ley to self.vertices and the LL as a value
+            self.vertices[vertex] = LinkedList()
+            return
+        print("Vertex", vertex, "already exists")
+
+    def addEdge(self, vertex1, vertex2):#Worst case ---> O(1)
+        if vertex1 in self.vertices and vertex2 in self.vertices:# if the 2 verties the user wants to add an an edge btw them are found in self.vertisies the add a node of vertex 2 to vertex 1 and vise versal
+            self.vertices[vertex1].addNode(vertex2)
+            self.vertices[vertex2].addNode(vertex1)
+        elif vertex1 not in self.vertices and vertex2 not in self.vertices:
+            print("Vertices", vertex1, "and", vertex2, "do not exist to add the edge")
+        elif vertex1 not in self.vertices:
+            print("Vertex", vertex1, "does not exist to add the edge")
+        else:
+            print("Vertex", vertex2, "does not exist to add the edge")
+    def removeVertex(self, vertex):#Worst case ---> O(V)
+        if vertex in self.vertices: #if the vertex is found in self.vertices we delete it and the loop through all othor verticies and delet the node corresponing to that vertez if found
+            del self.vertices[vertex]
+            for v in self.vertices:
+                self.vertices[v].deleteNode(vertex)
+        else:
+            print(vertex, "does not exists")
+
+    def removeEdge(self, vertex1, vertex2):#Worst case ---> O(V)
+        if vertex1 in self.vertices and vertex2 in self.vertices:# if the 2 verticies found in self.vertecies delete node 1 from vertex 2 and vise versal
+            self.vertices[vertex1].deleteNode(vertex2)
+            self.vertices[vertex2].deleteNode(vertex1)
+
+    def display_vertices_with_degree(self, degree):#Worst case ---> O(1)
+        result = []
+        for vertex in self.vertices:#the size represents the number of edges to the vertes so if it is >= degree we append the vertex to the result
+            if self.vertices[vertex].size >= degree:
+                result.append(vertex)
+        return result
+    
     
 def displayMainMenu():#Worst case ---> O(1)
     print("1. Singly Linked List\n2. Check if Palindrome\n3. Priority Queue\n4. Evaluate an Infix Expression\n5. Graph\n6. Exit")
-def main():
+def main():# O(N^2)
     sll = SinglyLinkedList()
+    pq = PriorityQueue()
+    graph = Graph()
     displayMainMenu()
     choice = int(input("Enter a number:"))
     counter = 0
@@ -263,3 +340,51 @@ def main():
         elif choice == 4:
             expression = input("Enter an infix expression: ")
             print("The answer of your infix expression is :", evaluateAnInfixExpression(expression))
+        elif choice == 5:
+            while True:
+                print("5. Graph")
+                print("a. Add vertex")
+                print("b. Add edge")
+                print("c. Remove vertex")
+                print("d. Remove edge")
+                print("e. Display vertices with a degree of X or more.")
+                print("f. Return to main menu")
+                sub_choice = input("Enter your choice: ")
+                if sub_choice == 'a':
+                    vertex = input("Enter the vertex: ")
+                    graph.addVertex(vertex)
+                    
+                elif sub_choice == 'b':
+                    vertex1 = input("Enter the first vertex: ")
+                    vertex2 = input("Enter the second vertex: ")
+                    graph.addEdge(vertex1, vertex2)
+                    
+
+                elif sub_choice == 'c':
+                    vertex = input("Enter the vertex to remove: ")
+                    graph.removeVertex(vertex)
+                    
+
+                elif sub_choice == 'd':
+                    vertex1 = input("Enter the first vertex: ")
+                    vertex2 = input("Enter the second vertex: ")
+                    graph.removeEdge(vertex1, vertex2)
+                    
+
+                elif sub_choice == 'e':
+                    degree = int(input("Enter the degree: "))
+                    vertices = graph.display_vertices_with_degree(degree)
+                    print("Vertices with a degree of ",degree, " or more:",vertices)
+                    
+                elif sub_choice == 'f':
+                    break
+                else:
+                    print("Invalid choice. Please try again.")
+        elif choice != 6:
+            print("Invalid input")
+            counter += 1
+        displayMainMenu()
+        choice = int(input("Enter a number:"))
+    print("Exited,Good bye")
+
+main()
