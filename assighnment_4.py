@@ -48,6 +48,25 @@ class SinglyLinkedList:#Worst case ---> O(N) wher n represents the number of nod
                 print("Can't delete from empty linked list")
             else:#if the current pointer reached the end of the LL and pointed to none then the value was not found
                 print("Value not found")
+class Stack:#Worst case ---> O(1)
+    def __init__(self):
+        self.data = []
+    def push(self, data):
+        self.data.append(data)#adds the element to the list
+    def pop(self):
+        return self.data.pop()#removes the last pushed element to the list
+    def peek(self):#see the last element of the list without removing it
+        return self.data[len(self.data)-1]
+    def is_empty(self):#checks if the list is empty
+        return len(self.data) == 0
+def checkPalindrome(s):#Worst case ---> O(N) where N represents the length of the string
+    stack = Stack()
+    for char in s:#Worst case ---> O(N) #appends every character in the string to the stack
+        stack.push(char)
+    for char in s:#Worst case ---> O(N) #check if the first char in the string = to the last char in the stack and remove it
+        if char != stack.pop():
+            return False
+    return True
 def displayMainMenu():#Worst case ---> O(1)
     print("1. Singly Linked List\n2. Check if Palindrome\n3. Priority Queue\n4. Evaluate an Infix Expression\n5. Graph\n6. Exit")
 def main():
@@ -76,3 +95,7 @@ def main():
                     break
                 else:
                     print("Invalid choice. Try again.")
+        elif choice == 2:
+            string = input("Enter the string:")
+            print(checkPalindrome(string))
+
