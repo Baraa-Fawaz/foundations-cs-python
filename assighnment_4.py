@@ -149,6 +149,62 @@ class PriorityQueue:#Worst case ---> O(N)
             self.size -= 1
             print("We are interviewing:", student)
 
+def evaluateAnInfixExpression(expression):#Worst case ---> O(N^2)
+    stack_numbers = Stack()#initializing 2 stacks one for numbers and 1 for operators
+    stack_operators = Stack()
+
+    operators = set("+-*/")#to check if a char is an operator
+
+    def precedence(operator):# O(1) #This function will give higher priority to *and/ by returning 2 then for + and - by returning 1
+        if operator in "*/":
+            return 2
+        elif operator in "+-":
+            return 1
+        return 0
+
+    def apply_operator(operator, operand1, operand2):# O(1) # the function will take two operands and performs the arethmatic operation then return it
+        if operator == '+':
+            return operand1 + operand2
+        elif operator == '-':
+            return operand1 - operand2
+        elif operator == '*':
+            return operand1 * operand2
+        elif operator == '/':
+            return operand1 / operand2
+
+    for char in expression:#O(N) # starting by eterating through the whole exprission
+        if char.isdigit():# check if the char is a digit it pushes it to the stack for numbers
+            stack_numbers.push(int(char))
+        elif char in operators:# check if the char is an operater
+            while not stack_operators.is_empty() and precedence(stack_operators.peek()) >= precedence(char):#O(N)
+                operator = stack_operators.pop()
+                operand2 = stack_numbers.pop()
+                operand1 = stack_numbers.pop()
+                result = apply_operator(operator, operand1, operand2)
+                stack_numbers.push(result)
+            stack_operators.push(char)
+        elif char == "(":# if the char is "(" we push it to the stack operator)
+            stack_operators.push(char)
+        elif char == ")":# if the char is "(" we perform the operation btw "(" and ")" py popping the operator at the top and popping the two numbers in the stack-numbers and then push the result to the stack_numbers
+            while stack_operators.peek() != "(":#O(N)
+                operator = stack_operators.pop()
+                operand2 = stack_numbers.pop()
+                operand1 = stack_numbers.pop()
+                result = apply_operator(operator, operand1, operand2)
+                stack_numbers.push(result)
+            stack_operators.pop()  # Pop the corresponding "("
+
+    while not stack_operators.is_empty():#O(N)
+        operator = stack_operators.pop()
+        operand2 = stack_numbers.pop()
+        operand1 = stack_numbers.pop()
+        result = apply_operator(operator, operand1, operand2)
+        stack_numbers.push(result)
+    if not stack_numbers.is_empty():
+      return stack_numbers.pop()
+    else:
+      return None
+    
 def displayMainMenu():#Worst case ---> O(1)
     print("1. Singly Linked List\n2. Check if Palindrome\n3. Priority Queue\n4. Evaluate an Infix Expression\n5. Graph\n6. Exit")
 def main():
@@ -204,3 +260,6 @@ def main():
                     break
                 else:
                     print("Invalid choice. Try again.")
+        elif choice == 4:
+            expression = input("Enter an infix expression: ")
+            print("The answer of your infix expression is :", evaluateAnInfixExpression(expression))
